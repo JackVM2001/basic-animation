@@ -1,0 +1,63 @@
+#Initialize
+import pygame
+
+def main():
+    pygame.init()
+
+    #Display
+    screen = pygame.display.set_mode((640, 480))
+    pygame.display.set_caption("Dave!")
+
+    #Entities
+    #yellow background
+    background = pygame.Surface(screen.get_size())
+    background = background.convert()
+    #background.fill("orange")
+    background = pygame.image.load("backgroundimage.png")
+
+    #load an image
+    dave = pygame.image.load("david-removebg-preview.png")
+    dave = dave.convert_alpha()
+    dave = pygame.transform.scale(dave, (150, 150))
+
+    # set up some cardinal variables
+    dave_x = 0
+    dave_y = 150
+    1
+        
+
+    #ACTION
+
+        #Assign
+    clock = pygame.time.Clock()
+    keepGoing = True
+
+        #Loop
+    while keepGoing:
+
+        #Time
+        clock.tick(20)
+
+        #Events
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                keepGoing = False
+
+        #modify cardinal value
+        dave_x += 10
+        #check boundaries
+        if dave_x > screen.get_width():
+            dave_x = 0
+
+        #Refresh screen
+        screen.blit(background, (0, 0))
+        screen.blit(dave, (dave_x, dave_y))
+        pygame.display.flip()
+
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
+    
+    
+    
